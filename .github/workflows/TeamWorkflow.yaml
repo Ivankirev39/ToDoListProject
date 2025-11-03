@@ -29,3 +29,11 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /public_html/test/todo/
           local-dir: dist/
+
+      - name: Install TestCafe
+        run: npm install -g testcafe
+
+      - name: Update APT
+        run: sudo apt-get update  
+      
+
