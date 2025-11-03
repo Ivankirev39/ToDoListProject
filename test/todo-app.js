@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-fixture("Todo tests")
+fixture("ToDo App Tests")
     .page("https://ivankirev.dk/test/todo/");
 
 test("Add a new todo item", async t => {
