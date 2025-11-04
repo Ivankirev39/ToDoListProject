@@ -41,8 +41,7 @@ jobs:
         run: apt-get install -y chromium
 
       - name: Run tests
-        run: testcafe "chromium-browser:headless --no-sandbox" test/* 
+        run: testcafe "chromium:headless --no-sandbox" test/* 
 
       
 
-  
