@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/Ivankirev39/ToDoListProject/compare/v1.0.0...v1.1.0) (2025-11-05)
+
+
+### Features
+
+* **style:** add margin between input and add button for better spacing ([9a763e2](https://github.com/Ivankirev39/ToDoListProject/commit/9a763e20ea47e73b1ced24228a9bece4aaeb82f0))
+
+
+### Bug Fixes
+
+* change base in vite config ([3de1fee](https://github.com/Ivankirev39/ToDoListProject/commit/3de1feeea74f0df4f6d0736c2300af1546bd0528))
+* revert dir and base ([0980f8a](https://github.com/Ivankirev39/ToDoListProject/commit/0980f8a04b9f2b9706132d408b279a22a9194cfd))
+* revert vite config and dir ([a77d6c6](https://github.com/Ivankirev39/ToDoListProject/commit/a77d6c68827a4ba75b0abf0f0b14ae261f1a132b))
+
 ## 1.0.0 (2025-11-05)
 
 
