@@ -1,20 +1,23 @@
-name: Team Workflow
-
 on:
   push:
     branches:
-      - "main"
-  workflow_dispatch:
+      - main
 
 jobs:
   integration-delivery:
-    runs-on: ubuntu-latest
+    # NOTICE: We're no longer running ubuntu latest, since it has some issues with TestCafe. We have degraded to version 22.04 in stead.
+    runs-on: ubuntu-22.04
     environment: Test
-    container:
-      image: node
+    # NOTICE: Node-container anymore
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      # NOTICE: In stead of the container we're setting up node like this.
+      - name: Setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: latest
 
       - name: Install dependencies
         run: npm install
@@ -23,25 +26,16 @@ jobs:
         run: npm run build
 
       - name: FTP delivery
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.0
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          server: ${{ vars.FTP_SERVER }} 
+          server: ${{ vars.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /todo/test/
+          server-dir: test/todo/
           local-dir: dist/
 
-      - name: Install TestCafe
-        run: npm install -g testcafe
-
-      - name: Update APT
-        run:  apt-get update
-
-      - name: Install Chromium
-        run: apt-get install -y chromium
-
-      - name: Run tests
-        run: testcafe chromium:headless test/* 
-
-      
-
+      # NOTICE: We no longer install TestCafé manually, but use this pre-defined action to run the tests in stead (in Chrome, not chromium)
+      - name: Run TestCafe Tests
+        uses: DevExpress/testcafe-action@latest
+        with:
+          args: "chrome test/*"
