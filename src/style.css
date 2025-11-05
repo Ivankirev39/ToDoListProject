@@ -52,6 +52,7 @@ h1 {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  margin-right: 10px;
 }
 .todo-form button {
   padding: 10px;
