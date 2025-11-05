@@ -31,7 +31,7 @@ jobs:
           server: ${{ vars.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: test/todo/
+          server-dir: '/todo/test/'
           local-dir: dist/
 
       # NOTICE: We no longer install TestCafé manually, but use this pre-defined action to run the tests in stead (in Chrome, not chromium)
