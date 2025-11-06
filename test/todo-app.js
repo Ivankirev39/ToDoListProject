@@ -28,3 +28,26 @@ test("Remove a todo item", async t => {
         .expect(Selector("#todo-list").childElementCount).eql(1)
         .expect(Selector(".todo-item").withText("Clean your room").exists).notOk();
 });
+
+
+test("Toggle all todos as completed", async t => {
+    // Add three todos
+    await t
+        .typeText(Selector("#todo-input"), "Buy groceries")
+        .click(Selector(".todo-form button[type='submit']"))
+        .typeText(Selector("#todo-input"), "Cook dinner")
+        .click(Selector(".todo-form button[type='submit']"))
+        .typeText(Selector("#todo-input"), "Call my grandfather")
+        .click(Selector(".todo-form button[type='submit']"));
+
+    // Toggle all
+    await t
+        .click(Selector("#toggle-all"));
+
+    // Assert all checkboxes are checked
+    const todoItems = Selector(".todo-item");
+    const count = await todoItems.count;
+    for (let i = 0; i < count; i++) {
+        await t.expect(todoItems.nth(i).find("input[type='checkbox']").checked).ok();
+    }
+});
