@@ -13,6 +13,8 @@ const todoInput = document.getElementById('todo-input') as HTMLInputElement;
 const todoForm = document.querySelector('.todo-form') as HTMLFormElement;
 const todoList = document.querySelector('.todo-list') as HTMLUListElement;
 const errorMessage = document.getElementById('error-message') as HTMLDivElement;
+const themeToggleBtn = document.getElementById('theme-toggle') as HTMLButtonElement;
+
 const clearCompletedBtn = document.getElementById('clear-completed') as HTMLButtonElement;
 const toggleAllBtn = document.getElementById('toggle-all') as HTMLButtonElement;
 
@@ -90,6 +92,11 @@ const removeTodo = (id: number) => {
   renderTodos()
 }
 
+
+themeToggleBtn?.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  themeToggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Toggle Theme' : '🌙 Toggle Theme';
+});
 const clearCompletedTodos = () => {
   todos = todos.filter(todo => !todo.completed);
   renderTodos();
