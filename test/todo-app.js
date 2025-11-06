@@ -51,3 +51,26 @@ test("Toggle all todos as completed", async t => {
         await t.expect(todoItems.nth(i).find("input[type='checkbox']").checked).ok();
     }
 });
+
+
+test("Clear completed todos removes all toggled items", async t => {
+    // Add three todos
+    await t
+        .typeText(Selector("#todo-input"), "Buy groceries")
+        .click(Selector(".todo-form button[type='submit']"))
+        .typeText(Selector("#todo-input"), "Cook dinner")
+        .click(Selector(".todo-form button[type='submit']"))
+        .typeText(Selector("#todo-input"), "Call my grandfather")
+        .click(Selector(".todo-form button[type='submit']"));
+
+    // Toggle all
+    await t
+        .click(Selector("#toggle-all"));
+
+    // Clear completed
+    await t
+        .click(Selector("#clear-completed"));
+
+    // Assert that the todo list is empty
+    await t.expect(Selector("#todo-list").childElementCount).eql(0);
+});
