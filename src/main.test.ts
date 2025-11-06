@@ -89,3 +89,42 @@ describe('toggleAllTodos', () => {
         expect(result.every(todo => !todo.completed)).toBe(true);
     });
 });
+
+
+const clearCompletedTodos = (todos: Todo[]) => {
+    return todos.filter(todo => !todo.completed);
+};
+
+describe('clearCompletedTodos', () => {
+    it('should remove all completed todos', () => {
+        const todos: Todo[] = [
+            { id: 1, text: 'A', completed: true },
+            { id: 2, text: 'B', completed: false },
+            { id: 3, text: 'C', completed: true }
+        ];
+        const result = clearCompletedTodos(todos);
+        expect(result.length).toBe(1);
+        expect(result[0].id).toBe(2);
+        expect(result[0].completed).toBe(false);
+    });
+
+    it('should do nothing if no todos are completed', () => {
+        const todos: Todo[] = [
+            { id: 1, text: 'A', completed: false },
+            { id: 2, text: 'B', completed: false }
+        ];
+        const result = clearCompletedTodos(todos);
+        expect(result.length).toBe(2);
+        expect(result[0].id).toBe(1);
+        expect(result[1].id).toBe(2);
+    });
+
+    it('should return empty array if all todos are completed', () => {
+        const todos: Todo[] = [
+            { id: 1, text: 'A', completed: true },
+            { id: 2, text: 'B', completed: true }
+        ];
+        const result = clearCompletedTodos(todos);
+        expect(result.length).toBe(0);
+    });
+});
