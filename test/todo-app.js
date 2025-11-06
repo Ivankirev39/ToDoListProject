@@ -90,3 +90,31 @@ test("Toggle theme button switches between light and dark mode", async t => {
     await t.click(themeToggle);
     await t.expect(body.hasClass('dark-mode')).notOk();
 });
+
+
+test("Progress bar updates as todos are completed", async t => {
+    const progressBarFill = Selector('#progress-bar-fill');
+    const progressBarLabel = Selector('#progress-bar-label');
+
+    // Add three todos
+    await t
+        .typeText(Selector("#todo-input"), "Finish unity game")
+        .click(Selector(".todo-form button[type='submit']"))
+        .typeText(Selector("#todo-input"), "Listen to the new Don Toliver album")
+        .click(Selector(".todo-form button[type='submit']"))
+        .typeText(Selector("#todo-input"), "Watch the NBA Games tonight")
+        .click(Selector(".todo-form button[type='submit']"));
+
+    // Initially, progress should be 0%
+    await t.expect(progressBarFill.getStyleProperty('width')).eql('0%');
+    await t.expect(progressBarLabel.innerText).eql('0% completed');
+
+    // Complete one todo
+    await t.click(Selector(".todo-item").withText("Finish unity game").find("input[type='checkbox']"));
+    await t.expect(progressBarLabel.innerText).eql('33% completed');
+
+    // Complete all todos
+    await t.click(Selector(".todo-item").withText("Listen to the new Don Toliver album").find("input[type='checkbox']"));
+    await t.click(Selector(".todo-item").withText("Watch the NBA Games tonight").find("input[type='checkbox']"));
+    await t.expect(progressBarLabel.innerText).eql('100% completed');
+});
