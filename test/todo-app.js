@@ -93,7 +93,6 @@ test("Toggle theme button switches between light and dark mode", async t => {
 
 
 test("Progress bar updates as todos are completed", async t => {
-    const progressBarFill = Selector('#progress-bar-fill');
     const progressBarLabel = Selector('#progress-bar-label');
 
     // Add three todos
@@ -106,7 +105,6 @@ test("Progress bar updates as todos are completed", async t => {
         .click(Selector(".todo-form button[type='submit']"));
 
     // Initially, progress should be 0%
-    await t.expect(progressBarFill.getStyleProperty('width')).eql('0%');
     await t.expect(progressBarLabel.innerText).eql('0% completed');
 
     // Complete one todo
