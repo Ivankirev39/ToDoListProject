@@ -7,43 +7,38 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <div id="app">
-      <div class="container">
-        <h1>ToDo List</h1>
-        <form class="todo-form">
-          <input type="text" id="todo-input" placeholder="Add a new todo" />
+     <div id="app">
+    <div class="container">
+  <h1>ToDo List</h1>
+  <form class="todo-form">
+    <input type="text" id="todo-input" placeholder="Add a new todo" />
+    <button type="submit">Add Todo</button>
+  </form>
 
-          <button type="submit">Add Todo</button>
-         
-        </form>
-
-        <!-- error handling -->
-        <div id="error-message" class="error-message">Please enter a todo item</div>
-
-          <!-- Progress bar section -->
-          <div class="progress-bar-container">
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%"></div>
-            </div>
-            <div class="progress-bar-label" id="progress-bar-label">0% completed</div>
-          </div>
-        </div>
-
-        <ul class="todo-list" id="todo-list">
-          <!-- todo items will be rendered here -->
-        </ul>
-         <div class="action-buttons">
-          <button id="toggle-all" class="toggle-all">Toggle All</button>
-             <button id="clear-completed" class="clear-completed">Clear Completed</button>
-        </div>
-      </div>
+   <!-- Error message section -->
+  <div id="error-message" class="error-message">Please enter a todo item</div>
+  
+  <!-- Progress bar section -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%"></div>
+    </div>
+    <div class="progress-bar-label" id="progress-bar-label">0% completed</div>
+  </div>
+  
+  <ul class="todo-list" id="todo-list"></ul>
+  <div class="action-buttons">
+    <button id="toggle-all" class="toggle-all">Toggle All</button>
+    <button id="clear-completed" class="clear-completed">Clear Completed</button>
+  </div>
+</div>
+      <!-- Theme toggle button below the main container -->
       <div class="below-container-buttons" style="display: flex; justify-content: center; margin-top: 20px;">
         <button id="theme-toggle" class="theme-toggle">🌙 Toggle Theme</button>
       </div>
     </div>
 
-         
-
+ 
     
     <script type="module" src="/src/main.ts"></script>
 
