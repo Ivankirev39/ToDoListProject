@@ -12,6 +12,9 @@ let todos: Todo[] = [];
 const todoInput = document.getElementById('todo-input') as HTMLInputElement;
 const todoForm = document.querySelector('.todo-form') as HTMLFormElement;
 const todoList = document.querySelector('.todo-list') as HTMLUListElement;
+const errorMessage = document.getElementById('error-message') as HTMLDivElement;
+
+
 
 const addTodo = (text:string) => {
   const newTodo: Todo = {
@@ -24,15 +27,20 @@ console.log("check to see if push works:", todos);
 renderTodos()
 }
 
+
 todoForm.addEventListener('submit', (event:Event) => {
   event.preventDefault();
   const text = todoInput.value.trim();
   if (text !== '') {
     addTodo(text);
     todoInput.value = '';
+    errorMessage.style.display = 'none'; // Hide error on success
+    todoInput.classList.remove('input-error');
+  } else {
+    errorMessage.style.display = 'block'; // Show error
+    todoInput.classList.add('input-error');
   }
-
-}) 
+})
 
 const renderTodos = () => {
   todoList.innerHTML = '';
