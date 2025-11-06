@@ -128,3 +128,21 @@ describe('clearCompletedTodos', () => {
         expect(result.length).toBe(0);
     });
 });
+
+describe('theme toggle button', () => {
+    it('should toggle dark-mode class on body', () => {
+        // Setup DOM
+        document.body.innerHTML = `
+            <button id="theme-toggle">🌙 Toggle Theme</button>
+        `;
+        const themeToggleBtn = document.getElementById('theme-toggle') as HTMLButtonElement;
+
+        // Simulate click
+        themeToggleBtn.click();
+        expect(document.body.classList.contains('dark-mode')).toBe(true);
+
+        // Simulate another click
+        themeToggleBtn.click();
+        expect(document.body.classList.contains('dark-mode')).toBe(false);
+    });
+});
