@@ -15,6 +15,18 @@ const todoList = document.querySelector('.todo-list') as HTMLUListElement;
 const errorMessage = document.getElementById('error-message') as HTMLDivElement;
 const themeToggleBtn = document.getElementById('theme-toggle') as HTMLButtonElement;
 
+const clearCompletedBtn = document.getElementById('clear-completed') as HTMLButtonElement;
+const toggleAllBtn = document.getElementById('toggle-all') as HTMLButtonElement;
+
+
+
+clearCompletedBtn?.addEventListener('click', () => {
+  clearCompletedTodos();
+});
+
+toggleAllBtn?.addEventListener('click', () => {
+  toggleAllTodos();
+});
 
 
 
@@ -49,15 +61,22 @@ const renderTodos = () => {
   todos.forEach((todo) => {
     const li = document.createElement('li');
     li.className = 'todo-item';
-    li.innerHTML = `<span>${todo.text}</span>
-    <button>Remove</button>`
+    li.innerHTML = `
+      <input type="checkbox" class="toggle-completed" ${todo.completed ? 'checked' : ''} />
+      <span style="text-decoration: ${todo.completed ? 'line-through' : 'none'}">${todo.text}</span>
+      <button>Remove</button>
+    `;
 
-    addRemoveButtonListener(li, todo.id)
+    // Checkbox event
+    const checkbox = li.querySelector('.toggle-completed') as HTMLInputElement;
+    checkbox.addEventListener('change', () => {
+      todo.completed = checkbox.checked;
+      renderTodos();
+    });
+
+    addRemoveButtonListener(li, todo.id);
     todoList.appendChild(li);
-
-   
   })
-
 }
 renderTodos()
 
@@ -78,3 +97,13 @@ themeToggleBtn?.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
   themeToggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Toggle Theme' : '🌙 Toggle Theme';
 });
+const clearCompletedTodos = () => {
+  todos = todos.filter(todo => !todo.completed);
+  renderTodos();
+};
+
+const toggleAllTodos = () => {
+  const allCompleted = todos.every(todo => todo.completed);
+  todos = todos.map(todo => ({ ...todo, completed: !allCompleted }));
+  renderTodos();
+};
