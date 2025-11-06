@@ -74,3 +74,19 @@ test("Clear completed todos removes all toggled items", async t => {
     // Assert that the todo list is empty
     await t.expect(Selector("#todo-list").childElementCount).eql(0);
 });
+
+test("Toggle theme button switches between light and dark mode", async t => {
+    const body = Selector('body');
+    const themeToggle = Selector('#theme-toggle');
+
+    // Initial state: should not have dark-mode class
+    await t.expect(body.hasClass('dark-mode')).notOk();
+
+    // Click to enable dark mode
+    await t.click(themeToggle);
+    await t.expect(body.hasClass('dark-mode')).ok();
+
+    // Click again to disable dark mode
+    await t.click(themeToggle);
+    await t.expect(body.hasClass('dark-mode')).notOk();
+});
