@@ -63,3 +63,29 @@ describe('removeTodo', () => {
     expect(result[0].id).toBe(123);
     })
 })
+
+
+const toggleAllTodos = (todos: Todo[]) => {
+    const allCompleted = todos.every(todo => todo.completed);
+    return todos.map(todo => ({ ...todo, completed: !allCompleted }));
+};
+
+describe('toggleAllTodos', () => {
+    it('should mark all todos as completed if not all are completed', () => {
+        const todos: Todo[] = [
+            { id: 1, text: 'A', completed: false },
+            { id: 2, text: 'B', completed: false }
+        ];
+        const result = toggleAllTodos(todos);
+        expect(result.every(todo => todo.completed)).toBe(true);
+    });
+
+    it('should mark all todos as not completed if all are completed', () => {
+        const todos: Todo[] = [
+            { id: 1, text: 'A', completed: true },
+            { id: 2, text: 'B', completed: true }
+        ];
+        const result = toggleAllTodos(todos);
+        expect(result.every(todo => !todo.completed)).toBe(true);
+    });
+});
