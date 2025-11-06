@@ -82,20 +82,6 @@ const renderTodos = () => {
   });
   updateProgressBar(); // <-- Add this line
 };
-
-
-
-    // Checkbox event
-    const checkbox = li.querySelector('.toggle-completed') as HTMLInputElement;
-    checkbox.addEventListener('change', () => {
-      todo.completed = checkbox.checked;
-      renderTodos();
-    });
-
-    addRemoveButtonListener(li, todo.id);
-    todoList.appendChild(li);
-  })
-}
 renderTodos()
 
 const addRemoveButtonListener = (li: HTMLLIElement, id:number) => {
