@@ -146,3 +146,40 @@ describe('theme toggle button', () => {
         expect(document.body.classList.contains('dark-mode')).toBe(false);
     });
 });
+
+const getProgressPercent = (todos: Todo[]) => {
+    const total = todos.length;
+    const completed = todos.filter(todo => todo.completed).length;
+    return total === 0 ? 0 : Math.round((completed / total) * 100);
+};
+
+describe('getProgressPercent', () => {
+    it('should return 0% when there are no todos', () => {
+        expect(getProgressPercent([])).toBe(0);
+    });
+
+    it('should return 0% when none are completed', () => {
+        const todos: Todo[] = [
+            { id: 1, text: 'A', completed: false },
+            { id: 2, text: 'B', completed: false }
+        ];
+        expect(getProgressPercent(todos)).toBe(0);
+    });
+
+    it('should return correct percent when some are completed', () => {
+        const todos: Todo[] = [
+            { id: 1, text: 'A', completed: true },
+            { id: 2, text: 'B', completed: false },
+            { id: 3, text: 'C', completed: false }
+        ];
+        expect(getProgressPercent(todos)).toBe(33);
+    });
+
+    it('should return 100% when all are completed', () => {
+        const todos: Todo[] = [
+            { id: 1, text: 'A', completed: true },
+            { id: 2, text: 'B', completed: true }
+        ];
+        expect(getProgressPercent(todos)).toBe(100);
+    });
+});
