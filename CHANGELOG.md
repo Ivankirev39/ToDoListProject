@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.2.0](https://github.com/Ivankirev39/ToDoListProject/compare/v1.1.0...v1.2.0) (2025-11-06)
+
+
+### Features
+
+* Move toggle theme button to match the branch code ([8bdf9b6](https://github.com/Ivankirev39/ToDoListProject/commit/8bdf9b63c7237415b121156290a856ca7abcd38a))
+* Organize code structure ([39e570e](https://github.com/Ivankirev39/ToDoListProject/commit/39e570ed3820a62dc0d1d00a87db4dc8c6aa3df3))
+* Organize structure of index ([d7a62d0](https://github.com/Ivankirev39/ToDoListProject/commit/d7a62d06440c35047205945c36f415557dbdfe66))
+* **style:** add toggle dark theme and functionality ([eb2279a](https://github.com/Ivankirev39/ToDoListProject/commit/eb2279a3ee44d7049d2dc2c4294b0457cb505f66))
+* **style:** add toggle dark theme button and functionality ([a46e4ef](https://github.com/Ivankirev39/ToDoListProject/commit/a46e4efe856eae20dc588041b36e612e716cf8cb))
+* **style:** Change to original background color ([49a23f3](https://github.com/Ivankirev39/ToDoListProject/commit/49a23f3e67f7dd0c31e314b6cde4764aa94aac0f))
+* **todo:** add complete all and clear completed buttons ([51a7baa](https://github.com/Ivankirev39/ToDoListProject/commit/51a7baa2ddaba9a5e79adfd2c71584b1b2832888))
+* **todo:** add progressbar to show completion status of added todos ([3abc2f7](https://github.com/Ivankirev39/ToDoListProject/commit/3abc2f7b20187bd9eaebe7db802caa8ff6be6b3d))
+
+
+### Bug Fixes
+
+* change directory for base and teamworkflow one more time ([ed9782d](https://github.com/Ivankirev39/ToDoListProject/commit/ed9782d28d183a77ebca60bfaaf4b96a79e26c14))
+* change directory of base and teamworkflow back ([64f540d](https://github.com/Ivankirev39/ToDoListProject/commit/64f540d72916f9d73848c314a95e860b8a45ab92))
+* Refactor code after resolving merge conflicts ([a7d015b](https://github.com/Ivankirev39/ToDoListProject/commit/a7d015bfc3adf1ff391cf11361308af737875476))
+* Refactor code after resolving merge conflicts for the progress bar feature ([0eb96c5](https://github.com/Ivankirev39/ToDoListProject/commit/0eb96c57c624d66513aed6a3bfd8b6b5f5bcf6f1))
+* refactor main ts completely ([c1c5271](https://github.com/Ivankirev39/ToDoListProject/commit/c1c52712406d95a0ebf253106e516e50116c631e))
+* Refactor so the add to do button works again ([729316f](https://github.com/Ivankirev39/ToDoListProject/commit/729316f7f53dda30194bf91b0bcf5f0df35cb4d3))
+* remove buttons from ul ([defade7](https://github.com/Ivankirev39/ToDoListProject/commit/defade74ab63daee1110ffb5a69dca0ca352dc06))
+* Remove duplicated element resulted by merge conflicts ([415b8d0](https://github.com/Ivankirev39/ToDoListProject/commit/415b8d0c984122362ee4e4cb531a030cc5ffc7b5))
+
 ## [1.1.0](https://github.com/Ivankirev39/ToDoListProject/compare/v1.0.0...v1.1.0) (2025-11-05)
 
 
