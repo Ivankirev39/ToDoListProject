@@ -83,6 +83,40 @@ h1 {
 }
 
 
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  gap: 10px;
+}
+
+.action-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.clear-completed {
+  background: #dc3545;
+}
+
+.clear-completed:hover {
+  background: #b52a37;
+}
+
+.toggle-all {
+  background: #007bff;
+}
+
+.toggle-all:hover {
+  background: #0056b3;
+}
+
 .input-error {
   border: 2px solid red;
   background-color: #ffe6e6; /* Optional: Light red background to indicate error */
