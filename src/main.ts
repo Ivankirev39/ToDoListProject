@@ -33,15 +33,14 @@ toggleAllBtn?.addEventListener('click', () => {
 
 
 
-const addTodo = (text:string) => {
+const addTodo = (text: string) => {
   const newTodo: Todo = {
     id: Date.now(),
     text: text,
     completed: false
-}
-todos.push(newTodo);
-console.log("check to see if push works:", todos);
-renderTodos()
+  };
+  todos.push(newTodo);
+  renderTodos();
 }
 
 
@@ -74,14 +73,16 @@ const renderTodos = () => {
     const checkbox = li.querySelector('.toggle-completed') as HTMLInputElement;
     checkbox.addEventListener('change', () => {
       todo.completed = checkbox.checked;
-      renderTodos();
+      updateProgressBar(); // Only update progress bar, don't re-render the whole list
+      li.querySelector('span')!.style.textDecoration = todo.completed ? 'line-through' : 'none';
     });
 
     addRemoveButtonListener(li, todo.id);
     todoList.appendChild(li);
   });
-  updateProgressBar(); // <-- Add this line
+  updateProgressBar();
 };
+
 renderTodos()
 
 const addRemoveButtonListener = (li: HTMLLIElement, id:number) => {
