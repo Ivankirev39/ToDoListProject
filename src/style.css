@@ -22,7 +22,7 @@
 
 body {
   font-family: var(--font-family);
-  background-color: red;
+  background-color: var(--body-background-color);
   margin: 0;
   padding: 0;
   display: flex;
