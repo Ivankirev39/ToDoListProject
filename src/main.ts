@@ -16,6 +16,20 @@ const errorMessage = document.getElementById('error-message') as HTMLDivElement;
 const progressBarFill = document.getElementById('progress-bar-fill') as HTMLDivElement;
 const progressBarLabel = document.getElementById('progress-bar-label') as HTMLDivElement;
 
+const themeToggleBtn = document.getElementById('theme-toggle') as HTMLButtonElement;
+
+const clearCompletedBtn = document.getElementById('clear-completed') as HTMLButtonElement;
+const toggleAllBtn = document.getElementById('toggle-all') as HTMLButtonElement;
+
+
+
+clearCompletedBtn?.addEventListener('click', () => {
+  clearCompletedTodos();
+});
+
+toggleAllBtn?.addEventListener('click', () => {
+  toggleAllTodos();
+});
 
 
 
@@ -70,6 +84,18 @@ const renderTodos = () => {
 };
 
 
+
+    // Checkbox event
+    const checkbox = li.querySelector('.toggle-completed') as HTMLInputElement;
+    checkbox.addEventListener('change', () => {
+      todo.completed = checkbox.checked;
+      renderTodos();
+    });
+
+    addRemoveButtonListener(li, todo.id);
+    todoList.appendChild(li);
+  })
+}
 renderTodos()
 
 const addRemoveButtonListener = (li: HTMLLIElement, id:number) => {
@@ -91,4 +117,18 @@ const updateProgressBar = () => {
   const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
   if (progressBarFill) progressBarFill.style.width = percent + '%';
   if (progressBarLabel) progressBarLabel.textContent = `${percent}% completed`;
+};
+themeToggleBtn?.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  themeToggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Toggle Theme' : '🌙 Toggle Theme';
+});
+const clearCompletedTodos = () => {
+  todos = todos.filter(todo => !todo.completed);
+  renderTodos();
+};
+
+const toggleAllTodos = () => {
+  const allCompleted = todos.every(todo => todo.completed);
+  todos = todos.map(todo => ({ ...todo, completed: !allCompleted }));
+  renderTodos();
 };
