@@ -83,6 +83,15 @@ h1 {
 }
 
 
+
+
+
+
+
+
+
+
+
 body.dark-mode {
   background-color: #181818;
 }
@@ -126,6 +135,8 @@ body.dark-mode .todo-form input {
   color: #555;
 }
 
+body.dark-mode .progress-bar-bg {
+  background: #444;
 
 .theme-toggle {
   padding: 10px;
