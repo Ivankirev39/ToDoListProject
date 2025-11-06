@@ -158,6 +158,8 @@ body.dark-mode .progress-bar-label {
 body.dark-mode .below-container-buttons button {
   background: #333;
   color: #fff;
+}
+
 .action-buttons {
   display: flex;
   justify-content: space-between;
